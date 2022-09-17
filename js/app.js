@@ -8,7 +8,6 @@
  * Dependencies: None
  * 
  * JS Version: ES2015/ES6
- * 
  * JS Standard: ESlint
  * 
 */
@@ -28,9 +27,9 @@ const sections = document.querySelectorAll("section")
 
 //Creating the navigation list items for each section 
 //each list item is the section heading
-function CreateNavBar(){
+function CreateNavBar() {
     const navBar = document.querySelector("#navbar__list")
-    for(section of sections){
+    for (section of sections) {
         const li = document.createElement('li');
         const sectionName = section.querySelector("h2").innerText;
         li.appendChild(document.createTextNode(sectionName));
@@ -50,19 +49,19 @@ CreateNavBar()
 
 
 // Add class 'active' to section when near top of viewport to make it highlighted
-function activateClass(){
-    for(section of sections){
-       const recTop = section.getBoundingClientRect().top
-       const recBottom = section.getBoundingClientRect().bottom
-       section.classList.toggle("your-active-class",recTop <= 50 && recBottom > 60)
+function activateClass() {
+    for (section of sections) {
+        const recTop = section.getBoundingClientRect().top
+        const recBottom = section.getBoundingClientRect().bottom
+        section.classList.toggle("your-active-class", recTop <= 50 && recBottom > 60)
     }
 }
 
 
 // Scroll to anchor ID using scrollIntoView event
-function scrollToSection(button){
+function scrollToSection(button) {
     const section = document.querySelector(`[data-nav="${button.innerText}"]`)
-    section.scrollIntoView({behavior: "smooth"})
+    section.scrollIntoView({ behavior: "smooth" })
 }
 
 /**
@@ -75,8 +74,9 @@ function scrollToSection(button){
 const sectionButtons = document.querySelectorAll('li')
 
 
-sectionButtons.forEach(button => {button.addEventListener("click",function()
-{scrollToSection(button)})})
+sectionButtons.forEach(button => {
+    button.addEventListener("click", function () { scrollToSection(button) })
+})
 
 // Set sections as active
 window.addEventListener("scroll", activateClass)
